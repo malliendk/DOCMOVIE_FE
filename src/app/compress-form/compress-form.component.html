@@ -1,0 +1,16 @@
+<div class="background-container">
+  <div class="d-flex flex-column">
+    <h5>Target Directory Path</h5>
+    <div class="d-flex">
+      <p class="path-display">{{ targetDirectoryPath }}</p>
+    </div>
+  </div>
+  <button class="btn btn-warning" (click)="compress()" [disabled]="isProcessing">
+    @if (isProcessing) {
+      <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      Processing...
+    } @else {
+      Compress and save selected
+    }
+  </button>
+</div>
