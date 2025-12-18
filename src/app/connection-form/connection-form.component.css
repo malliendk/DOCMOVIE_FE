@@ -1,0 +1,25 @@
+.form-background {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 15vh;
+  width: 100vw;
+  padding: 2.5em;
+  background-color: #1d77a5;
+}
+
+@media screen and (min-width: 1501px) {
+  .form-background {
+    height: 10vh;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .form-background {
+    height: 15vh;
+  }
+}
+
+
+
+

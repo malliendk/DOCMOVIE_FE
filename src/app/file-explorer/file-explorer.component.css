@@ -1,0 +1,148 @@
+.file-explorer {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 2em;
+  padding: 1em 2em;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.file-explorer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 5px 0;
+}
+
+.file-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.file-item {
+  position: relative;
+}
+
+.file-item-content {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  gap: 8px; /* Add spacing between elements */
+}
+
+.file-item-content:hover {
+  background-color: #F5F5F5;
+}
+
+.file-item.selected > .file-item-content {
+  background-color: #E3F2FD;
+}
+
+.file-item-content {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: 4px;
+  gap: 4px;
+}
+
+@media screen and (max-width: 1499px) {
+  .file-item-content {
+    margin: 5px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .file-item-content {
+    margin: 10px;
+  }
+}
+
+.item-checkbox {
+  margin: 0;
+  padding: 0;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  position: relative;
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+}
+
+.file-list, .file-list li {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+}
+
+.toggle-icon {
+  width: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle-icon:hover {
+  color: #007bff;
+}
+
+.folder-icon,
+.file-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.folder-icon {
+  color: #FFC107;
+}
+
+.file-icon {
+  color: #6C757D;
+}
+
+.spacer {
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.item-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-size {
+  margin-left: auto;
+  color: #6C757D;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.item-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+

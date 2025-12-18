@@ -1,0 +1,39 @@
+<div class="form-background">
+  <h3 class="text-white">DOCMOVIE</h3>
+  <input type="text" class="form-control" placeholder="MachineName"
+         [(ngModel)]="machineName" name="machineName">
+  <input type="text" class="form-control" placeholder="UserName"
+         [(ngModel)]="userName" name="userName">
+  <input type="password" class="form-control" placeholder="Password"
+         [(ngModel)]="password" name="password">
+  <input type="number" class="form-control" placeholder="Port"
+         [(ngModel)]="port" name="port">
+  <button class="btn btn-warning" (click)="connect()">Connect</button>
+</div>
+
+@if (showSuccessMessage) {
+  <div class="alert alert-success mt-3 position-relative">
+    <div class="d-flex justify-content-between align-items-center">
+      <span>{{connectionSuccessMessage}}</span>
+      <button type="button" class="btn-close" aria-label="Close" (click)="hideSuccessMessage()"></button>
+    </div>
+    <div class="progress mt-2" style="height: 5px;">
+      <div class="progress-bar bg-success" role="progressbar"
+           [style.width]="progressValue + '%'"
+           [attr.aria-valuenow]="progressValue"
+           aria-valuemin="0"
+           aria-valuemax="100"></div>
+    </div>
+    <small class="text-muted">Message will close in {{remainingSeconds}} seconds</small>
+  </div>
+}
+
+@if (errors.length > 0) {
+  <div class="alert alert-danger mt-3">
+    <ul class="mb-0">
+      @for (error of errors; track error) {
+        <li>{{error}}</li>
+      }
+    </ul>
+  </div>
+}

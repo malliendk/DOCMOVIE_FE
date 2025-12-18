@@ -1,0 +1,29 @@
+.app-background {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #B8C5D0;
+}
+
+app-connection-form {
+  flex-shrink: 0; /* Fixed height - won't shrink */
+}
+
+app-file-explorer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+app-compress-bar {
+  flex-shrink: 0; /* Fixed height - won't shrink */
+}
+
+.file-explorers-container {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}

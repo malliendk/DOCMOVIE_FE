@@ -1,0 +1,88 @@
+<div class="file-explorer">
+  <h5>{{ directoryTypeHeader }}</h5>
+  <div class="path-display">
+    @if (isConnectionSuccessful) {
+      <span>{{ serverPath }}</span>
+    }
+  </div>
+  @if (fetchingFilesMessage) {
+    <div class="d-flex align-items-center p-3">
+      <div class="spinner-border text-primary me-3" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div>
+        <h5 class="mb-0">{{ fetchingFilesMessage }}</h5>
+        <small class="text-muted">Please wait while we retrieve your files...</small>
+      </div>
+    </div>
+  }
+  @if (retrievalError) {
+    <div class="alert alert-danger m-3" role="alert">
+      <div class="d-flex align-items-center mb-2">
+        <div class="me-2">
+          <i class="bi bi-exclamation-triangle-fill"></i>
+        </div>
+        <div class="flex-grow-1">
+          <strong>Error:</strong> {{ retrievalError }}
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-outline-danger btn-sm" (click)="loadFilesBasic()">
+          <i class="bi bi-arrow-clockwise me-1"></i> Retry
+        </button>
+      </div>
+    </div>
+  }
+  @if (fileSystemData.length > 0 && !fetchingFilesMessage && !retrievalError) {
+    <div class="file-explorer-content">
+      <ng-container *ngTemplateOutlet="fileSystemTemplate; context: { items: fileSystemData }"></ng-container>
+    </div>
+  }
+</div>
+
+<ng-template #fileSystemTemplate let-items="items">
+  <ul class="file-list">
+    @for (item of items; track item.path) {
+      <li class="file-item" [class.selected]="item.isSelected">
+        <div class="file-item-content"
+             [style.padding-left.px]="(item.level || 0) * 20"
+             (click)="onItemClick(item, $event)">
+          @if (directoryType === 'source') {
+            <input type="checkbox"
+                   class="item-checkbox"
+                   [checked]="item.isSelected"
+                   (change)="onCheckboxChange(item, $event)"
+                   (click)="$event.stopPropagation()">
+          }
+          @if (item.type === 'folder') {
+            <span class="toggle-icon" (click)="toggleFolder(item); $event.stopPropagation()">
+              <i class="bi" [ngClass]="item.isExpanded ? 'bi-chevron-down' : 'bi-chevron-right'"></i>
+            </span>
+            <span class="folder-icon">
+              <i class="bi bi-folder-fill"></i>
+            </span>
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-size">{{ item.size }}</span>
+          }
+
+          @if (item.type === 'file') {
+            <span class="spacer"></span>
+            <span class="file-icon">
+              @if (item.extension === 'pdf') {
+                <i class="bi bi-file-pdf-fill"></i>
+              } @else {
+                <i class="bi bi-file-text"></i>
+              }
+            </span>
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-size">{{ item.size }}</span>
+          }
+        </div>
+
+        @if (item.type === 'folder' && item.isExpanded && item.children && item.children.length > 0) {
+          <ng-container *ngTemplateOutlet="fileSystemTemplate; context: { items: item.children }"></ng-container>
+        }
+      </li>
+    }
+  </ul>
+</ng-template>
