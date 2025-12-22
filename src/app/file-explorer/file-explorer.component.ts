@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {FileSystemItem} from '../../DTO/FileSystemItem';
+import {FileSystemItem} from '../../dto/FileSystemItem';
 import {FileService} from '../../service/file.service';
 import {CommonModule, NgClass} from '@angular/common';
 
@@ -13,7 +13,7 @@ import {CommonModule, NgClass} from '@angular/common';
   standalone: true,
   styleUrl: './file-explorer.component.css'
 })
-export class FileExplorerComponent implements OnInit, OnChanges{
+export class FileExplorerComponent implements OnChanges{
   @Input() serverPath: string = '';
   @Input() isConnectionSuccessful: boolean = false;
   @Input() directoryType: string = '';
@@ -30,10 +30,6 @@ export class FileExplorerComponent implements OnInit, OnChanges{
 
 
   constructor(private fileService: FileService) {}
-
-  ngOnInit(): void {
-    this.loadFilesBasic();
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['isConnectionSuccessful']) {

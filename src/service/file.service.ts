@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {CompressionObject} from '../DTO/CompressionObject';
+import {CompressionObject} from '../dto/CompressionObject';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class FileService {
   }
 
   compressAndSaveFiles(compressionObject: CompressionObject) {
-    console.log('writing to path: {}', compressionObject.targetDirectoryPath);
+    console.log('service call POST: {}', compressionObject);
     return this.http.post<CompressionObject>('http://localhost:8080/api/files/convertToMp4', compressionObject);
   }
 }

@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {ConnectionFormComponent} from './connection-form/connection-form.component';
 import {FileExplorerComponent} from './file-explorer/file-explorer.component';
 import {CompressFormComponent} from './compress-form/compress-form.component';
-import {FileSystemItem} from '../DTO/FileSystemItem';
+import {FileSystemItem} from '../dto/FileSystemItem';
 
 @Component({
   selector: 'app-root',

@@ -1,8 +1,8 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormsModule} from '@angular/forms';
 import {FileService} from '../../service/file.service';
-import {FileSystemItem} from '../../DTO/FileSystemItem';
-import {CompressionObject} from '../../DTO/CompressionObject';
+import {FileSystemItem} from '../../dto/FileSystemItem';
+import {CompressionObject} from '../../dto/CompressionObject';
 
 @Component({
   selector: 'app-compress-bar',

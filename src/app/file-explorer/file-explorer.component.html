@@ -1,5 +1,9 @@
 <div class="file-explorer">
-  <h5>{{ directoryTypeHeader }}</h5>
+  <div class="d-flex justify-content-between">
+    <h5>{{ directoryTypeHeader }}</h5>
+    <button class="btn btn-outline-primary" (click)="loadFilesBasic()">Reload files</button>
+  </div>
+
   <div class="path-display">
     @if (isConnectionSuccessful) {
       <span>{{ serverPath }}</span>
