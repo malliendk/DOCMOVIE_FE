@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CompressionObject} from '../dto/CompressionObject';
+import {Observable} from 'rxjs';
+import {ConversionProgressEvent} from '../dto/ConversionProgressEvent';
 
 @Injectable({
   providedIn: 'root'
